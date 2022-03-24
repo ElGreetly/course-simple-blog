@@ -1,10 +1,11 @@
 @url  = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwiaWF0IjoxNjQ4MTQ0OTg2fQ.IAM2ynYTvkMi-pu_rgweKN4Akoh2ZWKgHGPRYP7f61M
 
 ### Register
 POST {{url}}/users/register
 Content-Type: application/json
 
-{"username":"ahmed1","password":"1234","name":"Ahmed1"}
+{"username":"ahmed11","password":"12341","name":"Ahmed11"}
 
 ### Login
 POST {{url}}/users/login
@@ -14,30 +15,30 @@ Content-Type: application/json
 
 ### Me
 GET {{url}}/users/me
-token: 0
+token: {{token}}
 
 ### Create Post
 POST {{url}}/posts
 Content-Type: application/json
-token: 0
+token: {{token}}
 
 {"title": "Test Post 2", "content": "Test Content 2"}
 
 ### Edit Post
 PUT {{url}}/posts/0
-token: 0
+token: {{token}}
 Content-Type: application/json
 
 {"title": "Test Post Edit", "content": "Test Content edit"}
 
 ### Delete Post
 DELETE {{url}}/posts/0
-token: 0
+token: {{token}}
 
 ### Get Posts
 GET {{url}}/posts
-token: 0
+token: {{token}}
 
 ### Get Post
 GET {{url}}/posts/3
-token: 0
+token: {{token}}

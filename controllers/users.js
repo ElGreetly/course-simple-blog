@@ -1,4 +1,5 @@
 const db = require("../utils/db");
+const { getSessionToken } = require("../utils/jwt");
 const { resolveToken } = require("../utils/tokenMiddleware");
 
 module.exports = (app) => {
@@ -9,6 +10,9 @@ module.exports = (app) => {
       data.users.push(body);
       db.saveData(data);
     }
+    body.token = getSessionToken({
+      id: data.users.findIndex((u) => u.username === body.username),
+    });
     res.json(body);
   });
 
@@ -21,12 +25,12 @@ module.exports = (app) => {
     );
 
     if (!user) return res.status(403).end();
-    user.token = users.findIndex((u) => u.username === username);
+    user.token = getSessionToken({
+      id: users.findIndex((u) => u.username === username),
+    });
     res.json(user);
   });
 
-  app.get("/me", resolveToken, (req, res) => {
-    res.json(req.user);
-  });
+  app.get("/me", resolveToken, (req, res) => res.json(req.user));
   return app;
 };
