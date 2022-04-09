@@ -1,5 +1,5 @@
 @url  = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwiaWF0IjoxNjQ4MTQ0OTg2fQ.IAM2ynYTvkMi-pu_rgweKN4Akoh2ZWKgHGPRYP7f61M
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNTE3NDBlMGU1ZWJiODA3M2JjOTZlNCIsImlhdCI6MTY0OTUwNTU4MX0.Oc89AcJEU_XW02OKKHzEUwiPNHp_xtUFGdGzZ7WRpiM
 
 ### Register
 POST {{url}}/users/register
@@ -11,7 +11,7 @@ Content-Type: application/json
 POST {{url}}/users/login
 Content-Type: application/json
 
-{"username":"ahmed1","password":"1234"}
+{"username":"ahmed11","password":"12341"}
 
 ### Me
 GET {{url}}/users/me

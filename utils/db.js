@@ -1,21 +1,17 @@
-const fs = require("fs");
-const path = require("path");
+const { MongoClient } = require("mongodb");
+// Connection URI
+const uri = process.env.MONGO_URL;
+// Create a new MongoClient
+const client = new MongoClient(uri);
 
-module.exports.set = () => {
-  if (fs.existsSync(path.join(__dirname, "../data"))) return;
-  fs.writeFileSync(
-    path.join(__dirname, "../data"),
-    JSON.stringify({ users: [], posts: [] })
-  );
+// Connect the client to the server
+const mongoClient = async () => {
+  await client.connect();
+  // Establish and verify connection
+  client.db("admin").command({ ping: 1 });
+  console.log("Connected successfully to MongoDB");
+
+  return client;
 };
 
-module.exports.getData = () => {
-  return JSON.parse(fs.readFileSync(path.join(__dirname, "../data")));
-};
-
-module.exports.saveData = (data) => {
-  return fs.writeFileSync(
-    path.join(__dirname, "../data"),
-    JSON.stringify(data)
-  );
-};
+module.exports = mongoClient;

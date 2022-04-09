@@ -1,6 +1,4 @@
-const db = require("../utils/db");
-
-module.exports = (app) => {
+module.exports = (app, db) => {
   app.post("/", (req, res) => {
     const { title, content } = req.body;
     const { user } = req;
